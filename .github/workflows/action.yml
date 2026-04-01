@@ -1,0 +1,21 @@
+name: Github Action
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v3
+      - name: use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: install dependencies
+        run: npm ci
+      - name: Run app
+        working-directory: ./src
+        run: node app.js
