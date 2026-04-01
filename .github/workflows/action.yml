@@ -15,7 +15,7 @@ jobs:
           cache: "npm"
 
       - name: install dependencies
-        run: npm ci
+        run: npm install
       - name: Run app
         working-directory: ./src
         run: node app.js
