@@ -5,14 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 20, 22 , 24]
+        node-version: [20, 22, 24]
     steps:
       - uses: actions/checkout@v3
       - name: use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
 
       - name: install dependencies
         run: npm install
